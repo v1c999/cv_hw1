@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 
 def displaySurfaceNormals(surfaceNormals):
 
+    
+
     plt.figure()
     plt.subplot(131)
     plt.title('X')

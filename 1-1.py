@@ -29,7 +29,6 @@ def lambertian(n, L):
     return albedo * light_intensity * np.maximum(np.dot(n, L), 0)
 
 def phong(n, L, V, exponent):
-    """I = I0 * max(0, r.V)^exponent, with r = 2(n.L)n - L"""
     nl = np.maximum(np.dot(n, L), 0)[..., None]
     r = 2 * nl * n - L
     view = np.maximum(np.dot(r, V), 0) ** exponent
@@ -40,8 +39,8 @@ def render(fn):
     img[mask] = fn(n[mask])
     return img
 
-# ---- Settings: (light direction, view direction) ----
-V = normalize([0, 0, 1])
+V = normalize([1, 0, 0]) # view direction
+
 settings = {
     "Light = camera":   normalize([0, 0, 1]),
     "Light from upper right":     normalize([1, 1, 1]),
@@ -49,7 +48,8 @@ settings = {
     "Lighting from above":     normalize([0, 0, 1]),
     "Light from left, grazing":   normalize([-1, 0, 0.5]),
 }
-exponents = [1, 5, 50, 100]
+
+exponents = [1, 5, 25, 100]
 
 fig, axes = plt.subplots(len(settings), 1 + len(exponents), figsize=(14, 8))
 for i, (name, L) in enumerate(settings.items()):
@@ -68,7 +68,4 @@ for ax in axes.ravel():
     ax.set_xticks([]); ax.set_yticks([])
 
 
-
-
-plt.tight_layout()
 plt.show()

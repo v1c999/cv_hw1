@@ -53,4 +53,4 @@ def loadFaceImages(pathname, subject_name, num_images):
 
 
 if __name__ == '__main__':
-    loadFaceImages('../data/photometricStereo/yaleB01', 'yaleB01', 64)
+    loadFaceImages('data/photometricStereo/yaleB02', 'yaleB02', 64)

@@ -34,7 +34,7 @@ from Aa_prepare_data import *
 from Ab_photometric_stereo import *
 from Ac_get_surface import *
 
-subjectName = 'debug' #debug, yaleB01, yaleB02, yaleB05, yaleB07
+subjectName = 'yaleB02' #debug, yaleB01, yaleB02, yaleB05, yaleB07
 numImages = 128
 data_dir = os.path.join('..', 'data')
 out_dir = os.path.join('..', 'output', 'photometricStereo')
