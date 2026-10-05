@@ -9,6 +9,7 @@ def photometricStereo(imarray, lightdirs):
     L = np.array(lightdirs)
     m, h, w = images.shape
     I = images.reshape(m, -1)
+    print(L.shape, I.shape)
 
     G, *_ = np.linalg.lstsq(L, I, rcond=None)
 
@@ -16,7 +17,7 @@ def photometricStereo(imarray, lightdirs):
     normals = G / np.maximum(np.linalg.norm(G, axis=0), 1e-8)
 
     albedo_img = albedo.reshape(h, w)
-    normals_img = normals.reshape(h, w, 3)
+    normals_img = normals.T.reshape(h, w, 3)
     
     return albedo_img, normals_img
 

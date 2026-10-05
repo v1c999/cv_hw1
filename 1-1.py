@@ -6,7 +6,6 @@ canvas = 3.0
 N = 500                      
 albedo, light_intensity = 1.0, 1.0         
 
-# Pixel grid centered on the sphere
 xs = np.linspace(-canvas/2, canvas/2, N)
 ys = np.linspace(-canvas/2, canvas/2, N)
 
@@ -39,14 +38,14 @@ def render(fn):
     img[mask] = fn(n[mask])
     return img
 
-V = normalize([1, 0, 0]) # view direction
+V = normalize([1, 0, 0])  # view direction
 
 settings = {
     "Light = camera":   normalize([0, 0, 1]),
     "Light from upper right":     normalize([1, 1, 1]),
     "Light from upper left":    normalize([-1, 1, 1]),
     "Lighting from above":     normalize([0, 0, 1]),
-    "Light from left, grazing":   normalize([-1, 0, 0.5]),
+    "Light from left":   normalize([-1, 0, 0.5]),
 }
 
 exponents = [1, 5, 25, 100]
@@ -64,8 +63,5 @@ for i, (name, L) in enumerate(settings.items()):
                   extent=[-canvas/2, canvas/2, -canvas/2, canvas/2], origin="lower")
         if i == 0:
             ax.set_title(f"Phong, n = {p}")
-for ax in axes.ravel():
-    ax.set_xticks([]); ax.set_yticks([])
-
 
 plt.show()
