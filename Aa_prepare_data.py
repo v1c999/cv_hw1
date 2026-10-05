@@ -12,9 +12,9 @@ def prepareData(imArray, ambientImage):
 
     max_val = 0
     imArray = np.moveaxis(np.asarray(imArray), -1, 0)
-    print(imArray.shape)
+    #print(imArray.shape)
     ambientImage = np.asarray(ambientImage, dtype=np.float64)
-    print(ambientImage.shape)
+    #print(ambientImage.shape)
 
     for image in imArray:
         image -= ambientImage
